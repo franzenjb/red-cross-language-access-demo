@@ -8,6 +8,31 @@
   </head>
   <body>
     <main class="leadership-site">
+      <aside class="side-menu" aria-label="Leadership demo menu">
+        <a class="side-brand" href="#top" aria-label="Universal language access home">
+          <span class="brand-mark" aria-hidden="true">+</span>
+          <span>Language Access Concept</span>
+        </a>
+
+        <div class="current-panel" aria-live="polite">
+          <span>Current view</span>
+          <strong data-current-view>Overview</strong>
+        </div>
+
+        <nav class="side-links" aria-label="Leadership sections">
+          <a class="side-link active" href="#top" data-view="Overview">Overview</a>
+          <a class="side-link" href="#science" data-view="Why these languages">Why these languages</a>
+          <a class="side-link" href="#mockups" data-view="Both demos side by side">Both demos side by side</a>
+          <a class="side-link" href="#recommendation" data-view="Build path">Build path</a>
+        </nav>
+
+        <div class="side-actions" aria-label="Open prototype apps">
+          <span>Open prototype</span>
+          <a href="volunteer-intake.html">Application form</a>
+          <a href="emergency-alert-mirror.html?screen=language&lang=en">Emergency app demo</a>
+        </div>
+      </aside>
+
       <header class="leadership-hero">
         <nav class="leadership-nav" aria-label="Page navigation">
           <a class="brand-link" href="#top" aria-label="Universal language access home">
@@ -15,23 +40,23 @@
             <span>Language Access Concept</span>
           </a>
           <div class="nav-links">
-            <a href="#top">Overview</a>
-            <a href="#science">Language data</a>
-            <a href="#mockups">Both mockups</a>
-            <a href="#recommendation">Build path</a>
+            <a href="#top" data-view="Overview">Overview</a>
+            <a href="#science" data-view="Why these languages">Language data</a>
+            <a href="#mockups" data-view="Both demos side by side">Both mockups</a>
+            <a href="#recommendation" data-view="Build path">Build path</a>
           </div>
         </nav>
 
         <nav class="demo-menu" aria-label="Open prototype screens">
-          <span>Show leadership:</span>
-          <a href="#top">Overview</a>
-          <a href="#science">Why these languages</a>
-          <a href="#mockups">Both demos side by side</a>
+          <span>Current: <strong data-current-view>Overview</strong></span>
+          <a href="#top" data-view="Overview">Overview</a>
+          <a href="#science" data-view="Why these languages">Why these languages</a>
+          <a href="#mockups" data-view="Both demos side by side">Both demos side by side</a>
           <a href="volunteer-intake.html">Application form</a>
           <a href="emergency-alert-mirror.html?screen=language&lang=en">Emergency app demo</a>
         </nav>
 
-        <section id="top" class="hero-grid">
+        <section id="top" class="hero-grid" data-section-view="Overview">
           <div class="hero-copy">
             <p class="eyebrow">Leadership briefing prototype</p>
             <h1>Make Red Cross digital access language-first.</h1>
@@ -64,7 +89,7 @@
         </section>
       </header>
 
-      <section id="science" class="science-section">
+      <section id="science" class="science-section" data-section-view="Why these languages">
         <div class="section-intro">
           <p class="eyebrow">Selection logic</p>
           <h2>Use population data first, then add disaster risk.</h2>
@@ -96,7 +121,7 @@
         </div>
       </section>
 
-      <section id="mockups" class="mockup-section">
+      <section id="mockups" class="mockup-section" data-section-view="Both demos side by side">
         <div class="section-intro">
           <p class="eyebrow">Two public-facing surfaces</p>
           <h2>One access model, two different risk levels.</h2>
@@ -146,7 +171,7 @@
         </div>
       </section>
 
-      <section id="recommendation" class="recommendation-section">
+      <section id="recommendation" class="recommendation-section" data-section-view="Build path">
         <div class="section-intro">
           <p class="eyebrow">Recommended build path</p>
           <h2>Do this in tiers instead of waiting for perfection.</h2>
@@ -171,5 +196,6 @@
         </div>
       </section>
     </main>
+    <script src="leadership-nav.js"></script>
   </body>
 </html>

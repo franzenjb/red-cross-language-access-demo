@@ -232,9 +232,68 @@ const languages = {
   }
 };
 
+const languageMeta = {
+  en: ["EN", "English", "ltr"],
+  es: ["ES", "Spanish", "ltr"],
+  zh: ["ZH", "Chinese", "ltr"],
+  tl: ["TL", "Tagalog", "ltr"],
+  vi: ["VI", "Vietnamese", "ltr"],
+  ar: ["AR", "Arabic", "rtl"],
+  fr: ["FR", "French", "ltr"],
+  ko: ["KO", "Korean", "ltr"],
+  pt: ["PT", "Portuguese", "ltr"],
+  hi: ["HI", "Hindi", "ltr"],
+  ht: ["HT", "Haitian Creole", "ltr"],
+  ru: ["RU", "Russian", "ltr"],
+  de: ["DE", "German", "ltr"],
+  te: ["TE", "Telugu", "ltr"],
+  ur: ["UR", "Urdu", "rtl"],
+  it: ["IT", "Italian", "ltr"],
+  pl: ["PL", "Polish", "ltr"],
+  bn: ["BN", "Bengali", "ltr"],
+  gu: ["GU", "Gujarati", "ltr"],
+  ja: ["JA", "Japanese", "ltr"],
+  fa: ["FA", "Farsi/Persian", "rtl"]
+};
+
+const expandedLanguageOptions = [
+  ["ZH", "Use app in Chinese"],
+  ["TL", "Use app in Tagalog"],
+  ["VI", "Use app in Vietnamese"],
+  ["AR", "Use app in Arabic"],
+  ["FR", "Use app in French"],
+  ["KO", "Use app in Korean"],
+  ["PT", "Use app in Portuguese"],
+  ["HI", "Use app in Hindi"],
+  ["HT", "Use app in Haitian Creole"],
+  ["RU", "Use app in Russian"],
+  ["DE", "Use app in German"],
+  ["TE", "Use app in Telugu"],
+  ["UR", "Use app in Urdu"],
+  ["IT", "Use app in Italian"],
+  ["PL", "Use app in Polish"],
+  ["BN", "Use app in Bengali"],
+  ["GU", "Use app in Gujarati"],
+  ["JA", "Use app in Japanese"],
+  ["FA", "Use app in Farsi/Persian"]
+];
+
 const screenSelect = document.querySelector("#screenSelect");
 const mirrorLanguage = document.querySelector("#mirrorLanguage");
 const phoneScreen = document.querySelector("#phoneScreen");
+
+function currentData() {
+  const key = mirrorLanguage.value;
+  const meta = languageMeta[key] || languageMeta.en;
+  return {
+    ...languages.en,
+    ...(languages[key] || {}),
+    code: meta[0],
+    languageName: meta[1],
+    dir: meta[2],
+    isDraft: !languages[key]
+  };
+}
 
 function header(data, title, hasSearch = false) {
   return `
@@ -266,9 +325,9 @@ function languageScreen(data) {
       <div class="language-card"><strong>◎ ES</strong><span>${data.useSpanish}</span><b>›</b></div>
       <p class="language-baseline">Current app baseline from the screenshot: two choices.</p>
       <h3>${data.proposed}</h3>
-      <div class="language-card proposed"><strong>◎ KO</strong><span>${data.useKorean}</span><b>›</b></div>
-      <div class="language-card proposed"><strong>◎ AR</strong><span>${data.useArabic}</span><b>›</b></div>
-      <div class="language-card proposed"><strong>◎ HT</strong><span>${data.useHaitian}</span><b>›</b></div>
+      ${expandedLanguageOptions.map(([code, label]) => `
+        <div class="language-card proposed"><strong>◎ ${code}</strong><span>${label}</span><b>›</b></div>
+      `).join("")}
     </section>
   `;
 }
@@ -333,7 +392,7 @@ function alertDetailScreen(data) {
 }
 
 function render() {
-  const data = languages[mirrorLanguage.value] || languages.en;
+  const data = currentData();
   document.documentElement.lang = mirrorLanguage.value;
   document.documentElement.dir = data.dir;
   const screen = screenSelect.value;

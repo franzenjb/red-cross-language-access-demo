@@ -26,6 +26,7 @@ Standalone pages:
 ## Prototype behavior
 
 - 135 selectable languages in the left rail.
+- The standalone volunteer and emergency demos both expose the same Census/MPI-priority starter list: English, Spanish, Chinese, Tagalog, Vietnamese, Arabic, French, Korean, Portuguese, Hindi, Haitian Creole, Russian, German, Telugu, Urdu, Italian, Polish, Bengali, Gujarati, Japanese, and Farsi/Persian.
 - Human-reviewed starter packs for English, Korean, Spanish, Arabic, French,
   Haitian Creole, Vietnamese, Simplified Chinese, Portuguese, Russian, Tagalog,
   Hindi, and Ukrainian.

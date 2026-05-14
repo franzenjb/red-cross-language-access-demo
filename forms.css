@@ -429,6 +429,8 @@ textarea {
 
 .demo-copy {
   padding-top: 24px;
+  direction: ltr;
+  text-align: left;
 }
 
 .demo-copy h1 {
@@ -499,6 +501,7 @@ textarea {
   color: #111;
   font-size: 17px;
   font-weight: 800;
+  direction: ltr;
 }
 
 .status-icons {
@@ -518,6 +521,7 @@ textarea {
   min-height: 790px;
   padding: 82px 18px 28px;
   background: #fff;
+  direction: ltr;
 }
 
 .mini-brand {

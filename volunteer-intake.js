@@ -129,13 +129,13 @@ const languageSelect = document.querySelector("#language");
 const toast = document.querySelector("#toast");
 
 function currentCopy() {
-  return copy[languageSelect.value] || copy.en;
+  return { ...copy.en, ...(copy[languageSelect.value] || {}) };
 }
 
 function updateLanguage() {
   const data = currentCopy();
   document.documentElement.lang = languageSelect.value;
-  document.documentElement.dir = ["ar"].includes(languageSelect.value) ? "rtl" : "ltr";
+  document.documentElement.dir = ["ar", "ur", "fa"].includes(languageSelect.value) ? "rtl" : "ltr";
   document.querySelectorAll("[data-text]").forEach((node) => {
     const key = node.dataset.text;
     if (data[key]) node.textContent = data[key];

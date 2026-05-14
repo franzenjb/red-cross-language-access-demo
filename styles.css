@@ -51,17 +51,33 @@ a {
   padding: 22px 0;
 }
 
-.leadership-nav a {
+.leadership-nav a,
+.demo-menu a,
+.screen-menu a {
   text-decoration: none;
+}
+
+.leadership-nav a {
   color: var(--muted);
   font-size: 14px;
   font-weight: 760;
 }
 
-.leadership-nav > div {
+.nav-links {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
+}
+
+.nav-links a {
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  border-color: var(--red);
+  color: var(--ink);
 }
 
 .brand-link {
@@ -84,6 +100,55 @@ a {
   font-size: 27px;
   font-weight: 900;
   line-height: 1;
+}
+
+.demo-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: min(1200px, calc(100vw - 40px));
+  margin: 0 auto;
+  border-top: 1px solid var(--soft);
+  padding: 12px 0 18px;
+}
+
+.demo-menu span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 860;
+}
+
+.demo-menu a,
+.screen-menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 820;
+}
+
+.demo-menu a:nth-last-child(-n + 3),
+.screen-menu a:first-child {
+  border-color: rgba(216, 41, 32, 0.28);
+  background: #fff6f5;
+  color: var(--red-dark);
+}
+
+.demo-menu a:hover,
+.demo-menu a:focus-visible,
+.screen-menu a:hover,
+.screen-menu a:focus-visible {
+  border-color: var(--red);
+  outline: 0;
 }
 
 .hero-grid,
@@ -279,6 +344,14 @@ h3 {
   text-decoration: none;
 }
 
+.screen-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -2px 0 14px;
+  padding-bottom: 2px;
+}
+
 .desktop-frame,
 .phone-frame {
   overflow: hidden;
@@ -353,8 +426,31 @@ iframe {
     flex-direction: column;
   }
 
-  .leadership-nav > div {
+  .nav-links {
     gap: 12px;
+  }
+
+  .demo-menu {
+    width: min(100vw - 28px, 1200px);
+    padding-bottom: 14px;
+  }
+
+  .demo-menu span {
+    width: 100%;
+  }
+
+  .demo-menu a,
+  .screen-menu a {
+    flex: 1 1 150px;
+  }
+
+  .hero-actions a {
+    width: 100%;
+  }
+
+  .mockup-heading {
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
 
   .hero-grid,

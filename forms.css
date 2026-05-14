@@ -996,3 +996,35 @@ textarea {
     max-height: none;
   }
 }
+
+.phone-embed {
+  background: #fff;
+}
+
+.phone-embed .emergency-demo {
+  display: block;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.phone-embed .demo-copy {
+  display: none;
+}
+
+.phone-embed .phone-wrap {
+  position: relative;
+  top: 0;
+}
+
+.phone-embed .phone-shell {
+  max-width: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.phone-embed .phone-screen {
+  min-height: 760px;
+  max-height: none;
+}

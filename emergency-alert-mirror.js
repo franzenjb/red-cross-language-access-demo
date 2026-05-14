@@ -281,6 +281,19 @@ const expandedLanguageOptions = [
 const screenSelect = document.querySelector("#screenSelect");
 const mirrorLanguage = document.querySelector("#mirrorLanguage");
 const phoneScreen = document.querySelector("#phoneScreen");
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("embed") === "phone") {
+  document.body.classList.add("phone-embed");
+}
+
+if (params.get("screen")) {
+  screenSelect.value = params.get("screen");
+}
+
+if (params.get("lang")) {
+  mirrorLanguage.value = params.get("lang");
+}
 
 function currentData() {
   const key = mirrorLanguage.value;

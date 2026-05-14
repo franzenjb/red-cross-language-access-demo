@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multilingual Emergency Alert Mirror</title>
+    <link rel="stylesheet" href="forms.css" />
+  </head>
+  <body>
+    <main class="alert-page">
+      <header class="form-header">
+        <a class="back-link" href="index.html" data-text="back">Combined console</a>
+        <div class="form-brand">
+          <div class="form-mark pulse" aria-hidden="true">!</div>
+          <div>
+            <p class="eyebrow" data-text="eyebrow">Emergency alert concept</p>
+            <h1 data-text="title">Mirror every alert into every language</h1>
+          </div>
+        </div>
+        <div class="language-control">
+          <label for="alertLanguage" data-text="languageLabel">Language</label>
+          <select id="alertLanguage">
+            <option value="ko">Korean / 한국어</option>
+            <option value="en">English</option>
+            <option value="es">Spanish / español</option>
+            <option value="ar">Arabic / العربية</option>
+            <option value="fr">French / français</option>
+            <option value="ht">Haitian Creole / Kreyòl ayisyen</option>
+            <option value="vi">Vietnamese / Tiếng Việt</option>
+            <option value="zh">Chinese / 简体中文</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="alert-workbench">
+        <article class="source-pane">
+          <p class="eyebrow">English source</p>
+          <h2>Severe storms: move indoors now</h2>
+          <p>Severe thunderstorms are moving through Cumberland County. Move indoors now. Avoid flooded roads. Keep your phone charged and monitor local officials for updates.</p>
+          <div class="metadata-grid">
+            <div><strong>Area</strong><span>Cumberland County, Maine</span></div>
+            <div><strong>Urgency</strong><span>Immediate</span></div>
+            <div><strong>Expires</strong><span>8:30 PM ET</span></div>
+          </div>
+        </article>
+
+        <article class="translated-pane">
+          <div class="pane-topline">
+          <p class="eyebrow" data-text="translatedLabel">Translated public alert</p>
+            <span id="confidenceBadge">98% confidence</span>
+          </div>
+          <h2 id="alertHeadline"></h2>
+          <p id="alertBody"></p>
+          <ol id="alertSteps"></ol>
+        </article>
+
+        <aside class="review-pane">
+          <h2 data-text="releaseGate">Release gate</h2>
+          <div class="review-item green">
+            <strong>Source preserved</strong>
+            <span>English alert stays attached to the translated copy.</span>
+          </div>
+          <div class="review-item amber">
+            <strong>Human review required</strong>
+            <span>Safety instructions should be approved before push delivery.</span>
+          </div>
+          <div class="review-item blue">
+            <strong>Audit ready</strong>
+            <span>Language, confidence, timestamp, reviewer, and changes are recorded.</span>
+          </div>
+          <div class="button-stack">
+            <button type="button" class="approve" data-text="approve">Approve translated alert</button>
+            <button type="button" data-text="interpreter">Send to interpreter</button>
+            <button type="button" data-text="alternate">Request alternate wording</button>
+          </div>
+        </aside>
+      </section>
+    </main>
+    <script src="emergency-alert-mirror.js"></script>
+  </body>
+</html>

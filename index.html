@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Universal Language Access Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="language-panel" aria-label="Language selector">
+        <div class="brand-block">
+          <div class="mark" aria-hidden="true">+</div>
+          <div>
+            <p class="system-label">Concept prototype</p>
+            <h1>Universal Language Access</h1>
+          </div>
+        </div>
+
+        <label class="search-label" for="languageSearch">Find a language</label>
+        <div class="search-box">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m21 21-4.35-4.35m1.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+          </svg>
+          <input id="languageSearch" type="search" autocomplete="off" placeholder="Korean, Arabic, Haitian Creole..." />
+        </div>
+
+        <div class="language-count">
+          <span id="languageCount">0</span>
+          <span>selectable languages</span>
+        </div>
+
+        <div id="languageList" class="language-list" role="listbox" aria-label="Available languages"></div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="system-label">Selected language</p>
+            <h2 id="activeLanguageTitle">Korean</h2>
+          </div>
+          <div class="topbar-actions">
+            <a class="secondary-button topbar-link" href="volunteer-intake.html">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm13 10v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              Volunteer form
+            </a>
+            <a class="secondary-button topbar-link" href="emergency-alert-mirror.html">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM13.73 21a2 2 0 0 1-3.46 0" />
+              </svg>
+              Alert mirror
+            </a>
+            <button id="copySummary" class="secondary-button" type="button">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2M6 7h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" />
+              </svg>
+              Copy concept brief
+            </button>
+            <button id="translatePacket" class="primary-button" type="button">
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M4 5h7M8 3v2m0 0c0 3.5-1.5 6-4 8m4-8c.7 2.2 2 4 4 5.5M13 19l4-9 4 9m-1.2-3h-5.6" />
+              </svg>
+              Stage translation packet
+            </button>
+          </div>
+        </header>
+
+        <section class="status-strip" aria-label="Translation status">
+          <div>
+            <span class="status-dot ready"></span>
+            <strong id="coverageLabel">Human-reviewed core pack</strong>
+            <p id="coverageDetail">Volunteer intake and emergency alert text are available in the selected language.</p>
+          </div>
+          <div>
+            <span class="status-dot caution"></span>
+            <strong>Emergency review gate</strong>
+            <p>Alert translations are drafted fast, then held for operator approval before public release.</p>
+          </div>
+          <div>
+            <span class="status-dot neutral"></span>
+            <strong>Source preserved</strong>
+            <p>English source text stays attached for audit, corrections, and after-action review.</p>
+          </div>
+        </section>
+
+        <nav class="tabbar" aria-label="Prototype modules">
+          <button class="tab active" type="button" data-tab="volunteer">Volunteer application mirror</button>
+          <button class="tab" type="button" data-tab="alerts">Emergency alert mirror</button>
+          <button class="tab" type="button" data-tab="ops">Operations queue</button>
+        </nav>
+
+        <section id="volunteer" class="workspace active" aria-labelledby="volunteerTitle">
+          <div class="section-heading">
+            <div>
+              <p class="system-label">Public intake</p>
+              <h2 id="volunteerTitle" data-i18n="volunteerTitle">Volunteer application mirror</h2>
+            </div>
+            <span class="source-tag">Modeled from public Red Cross volunteer start path</span>
+          </div>
+
+          <div class="content-grid">
+            <form id="volunteerForm" class="form-card">
+              <div class="field-row two">
+                <label>
+                  <span data-i18n="fullName">Full name</span>
+                  <input name="name" autocomplete="name" value="Jin Park" />
+                </label>
+                <label>
+                  <span data-i18n="preferredName">Preferred name</span>
+                  <input name="preferred" autocomplete="nickname" value="Jin" />
+                </label>
+              </div>
+
+              <div class="field-row two">
+                <label>
+                  <span data-i18n="email">Email</span>
+                  <input name="email" type="email" autocomplete="email" value="jin.park@example.com" />
+                </label>
+                <label>
+                  <span data-i18n="phone">Mobile phone</span>
+                  <input name="phone" autocomplete="tel" value="207-555-0188" />
+                </label>
+              </div>
+
+              <div class="field-row two">
+                <label>
+                  <span data-i18n="zip">ZIP code</span>
+                  <input name="zip" inputmode="numeric" value="04110" />
+                </label>
+                <label>
+                  <span data-i18n="age">I am 18 or older</span>
+                  <select name="age">
+                    <option data-i18n="yes">Yes</option>
+                    <option data-i18n="no">No</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span data-i18n="skills">Skills and languages</span>
+                <textarea name="skills" rows="4" data-i18n-placeholder="skillsPlaceholder">Native Korean speaker. Comfortable with phones, translation, shelter support, and maps.</textarea>
+              </label>
+
+              <label>
+                <span data-i18n="interests">Volunteer interests</span>
+                <select name="interests">
+                  <option data-i18n="intakeOption">Disaster response and community support</option>
+                  <option data-i18n="bloodOption">Blood donor ambassador</option>
+                  <option data-i18n="virtualOption">Remote or virtual support</option>
+                  <option data-i18n="languageOption">Language access and interpretation</option>
+                </select>
+              </label>
+
+              <label>
+                <span data-i18n="availability">Availability</span>
+                <textarea name="availability" rows="3" data-i18n-placeholder="availabilityPlaceholder">Weeknights after 6 PM and weekends. Can help remotely during alerts.</textarea>
+              </label>
+
+              <div class="consent-row">
+                <input id="consent" type="checkbox" checked />
+                <label for="consent" data-i18n="consent">I understand this is a concept intake mirror and not an official volunteer submission.</label>
+              </div>
+            </form>
+
+            <aside class="review-card" aria-label="Application translation review">
+              <div class="review-header">
+                <h3 data-i18n="reviewTitle">What the applicant sees</h3>
+                <span id="volunteerBadge" class="badge ready">Reviewed</span>
+              </div>
+              <div class="translated-preview">
+                <p id="translatedWelcome" class="large-copy"></p>
+                <p id="translatedSupport"></p>
+              </div>
+              <div class="audit-list">
+                <div>
+                  <strong data-i18n="auditOneTitle">No language dead end</strong>
+                  <p data-i18n="auditOneBody">The first screen asks for the applicant's language before account creation.</p>
+                </div>
+                <div>
+                  <strong data-i18n="auditTwoTitle">Interpreter signal captured</strong>
+                  <p data-i18n="auditTwoBody">Native-language skill is stored as structured volunteer capacity, not buried in notes.</p>
+                </div>
+                <div>
+                  <strong data-i18n="auditThreeTitle">Support fallback visible</strong>
+                  <p data-i18n="auditThreeBody">Phone and email help remain available when translation confidence is low.</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="alerts" class="workspace" aria-labelledby="alertsTitle">
+          <div class="section-heading">
+            <div>
+              <p class="system-label">Public safety content</p>
+              <h2 id="alertsTitle" data-i18n="alertsTitle">Emergency alert mirror</h2>
+            </div>
+            <span class="source-tag">Designed for NOAA/NWS-style alert text plus Red Cross guidance</span>
+          </div>
+
+          <div class="alert-layout">
+            <article class="alert-card">
+              <div class="alert-severity">Severe weather alert</div>
+              <h3 id="alertHeadline"></h3>
+              <dl>
+                <div>
+                  <dt data-i18n="area">Area</dt>
+                  <dd>Cumberland County, Maine</dd>
+                </div>
+                <div>
+                  <dt data-i18n="urgency">Urgency</dt>
+                  <dd data-i18n="immediate">Immediate</dd>
+                </div>
+                <div>
+                  <dt data-i18n="expires">Expires</dt>
+                  <dd>8:30 PM ET</dd>
+                </div>
+              </dl>
+              <p id="alertBody" class="alert-body"></p>
+              <ol id="alertSteps" class="steps"></ol>
+            </article>
+
+            <aside class="source-card">
+              <h3>Source text</h3>
+              <p>Severe thunderstorms are moving through Cumberland County. Move indoors now. Avoid flooded roads. Keep your phone charged and monitor local officials for updates.</p>
+              <div class="confidence-meter">
+                <div>
+                  <strong id="confidenceScore">98%</strong>
+                  <span>translation confidence</span>
+                </div>
+                <div class="meter-track">
+                  <span id="meterBar"></span>
+                </div>
+              </div>
+              <div class="review-stack">
+                <button class="review-button approved" type="button">Approve push</button>
+                <button class="review-button" type="button">Send to interpreter</button>
+                <button class="review-button" type="button">Escalate wording</button>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="ops" class="workspace" aria-labelledby="opsTitle">
+          <div class="section-heading">
+            <div>
+              <p class="system-label">Translation operations</p>
+              <h2 id="opsTitle">Every-language release queue</h2>
+            </div>
+            <span class="source-tag">Prototype control room for forms and alert copy</span>
+          </div>
+
+          <div class="ops-grid">
+            <div class="ops-card">
+              <h3>Language coverage model</h3>
+              <div class="coverage-row">
+                <strong>12</strong>
+                <span>human-reviewed starter packs</span>
+              </div>
+              <div class="coverage-row">
+                <strong id="opsLanguageCount">0</strong>
+                <span>languages selectable at intake</span>
+              </div>
+              <div class="coverage-row">
+                <strong>1</strong>
+                <span>source-of-truth English packet</span>
+              </div>
+            </div>
+
+            <div class="ops-card">
+              <h3>Recommended production pattern</h3>
+              <ul class="plain-list">
+                <li>Ask language first, before login or account creation.</li>
+                <li>Store preferred language and interpreter skill as structured fields.</li>
+                <li>Use a translation memory for stable form labels and safety phrases.</li>
+                <li>Machine translate long-tail languages, then flag emergency alerts for approval.</li>
+                <li>Keep English source, translated text, model, reviewer, and timestamp together.</li>
+              </ul>
+            </div>
+
+            <div class="ops-card queue-card">
+              <h3>Review queue</h3>
+              <div id="queueRows"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

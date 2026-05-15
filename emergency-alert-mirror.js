@@ -676,6 +676,123 @@ const languageMeta = {
   fa: ["FA", "Farsi/Persian", "rtl"]
 };
 
+Object.assign(languages.en, {
+  servicesAvailable: "Services available in this location",
+  locationSettings: "Location Settings",
+  nickname: "Nickname",
+  setupAlerts: "Set up alerts",
+  stateEmergencyContact: "State Emergency Contact",
+  deleteLocation: "Delete location",
+  noAlertsShort: "No Alerts",
+  noAlertsLocation: "Of the alerts that you switched on, none are active at this time.",
+  mapsShelters: "Maps & Shelters",
+  maps: "Maps",
+  shelters: "Shelters",
+  overlay: "Overlay",
+  hurricaneTracker: "Hurricane Tracker",
+  noHurricanes: "There are no hurricanes or tropical storms in the forecast.",
+  info: "Info",
+  featured: "Featured",
+  sponsor: "Sponsor",
+  sponsorBody: "Learn more about our sponsor, State Farm®",
+  findOutMore: "Find Out More",
+  partners: "Partners",
+  endorsingPartners: "Endorsing Partners",
+  sponsoringPartners: "Sponsoring Partners",
+  tools: "Tools",
+  imSafe: "I'm Safe",
+  back: "Back",
+  allHazards: "All hazards",
+  complete: "complete",
+  learnTab: "Learn",
+  planTab: "Plan",
+  newLabel: "New",
+  essentials: "Essentials",
+  extremeHeat: "Extreme Heat",
+  powerOutage: "Power Outage",
+  extremeCold: "Extreme Cold / Winter Weather",
+  hurricane: "Hurricane",
+  flood: "Flood",
+  earthquake: "Earthquake",
+  severeThunderstorms: "Severe Thunderstorms",
+  tornado: "Tornado",
+  tsunami: "Tsunami",
+  volcano: "Volcano",
+  wildfires: "Wildfires",
+  airQuality: "Air Quality",
+  beach: "Beach",
+  dust: "Dust",
+  fog: "Fog",
+  highAlert: "High Alert",
+  highWinds: "High Winds",
+  tropicalCyclones: "Hurricanes / Tropical Cyclones",
+  smokeAdvisory: "Dense Smoke Advisory",
+  fireWeather: "Fire Weather Watch",
+  redFlag: "Red Flag Warning",
+  severeThunderstormWatch: "Severe Thunderstorm Watch",
+  sponsorIntro: "Duke Energy Foundation sponsors the American Red Cross Emergency app to help you prepare.",
+  sponsorCopy: "Duke Energy Foundation directs investments toward the center of its communities, cultivating vibrant economies, climate resilience, justice, equity, and inclusion."
+});
+
+Object.assign(languages.es, {
+  servicesAvailable: "Servicios disponibles en esta ubicación",
+  locationSettings: "Configuración de ubicación",
+  nickname: "Apodo",
+  setupAlerts: "Configurar alertas",
+  stateEmergencyContact: "Contacto estatal de emergencia",
+  deleteLocation: "Eliminar ubicación",
+  noAlertsShort: "No hay alertas",
+  noAlertsLocation: "De las alertas que activaste, ninguna está activa en este momento.",
+  mapsShelters: "Mapas y Refugios",
+  maps: "Mapas",
+  shelters: "Refugios",
+  overlay: "Superposición",
+  hurricaneTracker: "Rastreador de huracanes",
+  noHurricanes: "No hay huracanes ni tormentas tropicales en el pronóstico.",
+  info: "Información",
+  featured: "Destacado",
+  sponsor: "Patrocinador",
+  sponsorBody: "Más información sobre nuestro nuevo patrocinador, State Farm®",
+  findOutMore: "Saber más",
+  partners: "Socios respaldantes",
+  endorsingPartners: "Socios avaladores",
+  sponsoringPartners: "Socios patrocinadores",
+  tools: "Herramientas",
+  imSafe: "Estoy a salvo",
+  back: "Atrás",
+  allHazards: "Todos los peligros",
+  complete: "completo",
+  learnTab: "Aprender",
+  planTab: "Plan",
+  newLabel: "Nuevo",
+  essentials: "Elementos esenciales",
+  extremeHeat: "Calor extremo",
+  powerOutage: "Corte de energía",
+  extremeCold: "Frío extremo / tiempo invernal",
+  hurricane: "Huracán",
+  flood: "Inundación",
+  earthquake: "Terremoto",
+  severeThunderstorms: "Tormentas severas",
+  tornado: "Tornado",
+  tsunami: "Tsunami",
+  volcano: "Volcán",
+  wildfires: "Incendios forestales",
+  airQuality: "Calidad del aire",
+  beach: "Playa",
+  dust: "Polvo",
+  fog: "Niebla",
+  highAlert: "Alerta alta",
+  highWinds: "Vientos fuertes",
+  tropicalCyclones: "Huracanes / ciclones tropicales",
+  smokeAdvisory: "Aviso de humo denso",
+  fireWeather: "Vigilancia de condiciones de incendio",
+  redFlag: "Advertencia de bandera roja",
+  severeThunderstormWatch: "Vigilancia de tormenta severa",
+  sponsorIntro: "La Fundación Duke Energy patrocina la aplicación Emergencia de la Cruz Roja Americana para ayudarlo a prepararse.",
+  sponsorCopy: "La Fundación Duke Energy dirige las inversiones hacia el centro de sus comunidades, cultivando economías vibrantes, resiliencia climática, justicia, equidad e inclusión.",
+  bottom: ["Ubicaciones", "Preparar", "Alertas", "Mapa", "Información"]
+});
+
 const expandedLanguageOptions = [
   ["ZH", "Use app in Chinese"],
   ["TL", "Use app in Tagalog"],
@@ -739,11 +856,12 @@ function header(data, title, hasSearch = false) {
 }
 
 function bottomNav(data, active) {
+  const keys = ["locations", "prepare", "alerts", "maps", "info"];
+  const icons = ["◔", "✓", "▤", "●", "i"];
   return `
     <nav class="app-bottom-nav">
       ${data.bottom.map((label, index) => {
-        const keys = ["locations", "prepare", "alerts", "maps", "info"];
-        return `<button class="${keys[index] === active ? "active" : ""}" type="button"><span>${["◔", "✓", "▤", "●", "i"][index]}</span>${label}</button>`;
+        return `<button class="${keys[index] === active ? "active" : ""}" type="button" data-screen="${keys[index]}"><span>${icons[index]}</span>${label}</button>`;
       }).join("")}
     </nav>
   `;
@@ -754,13 +872,15 @@ function languageScreen(data) {
     <section class="language-gate">
       <div class="mini-brand"><span class="brand-cross">+</span><strong>American<br>Red Cross</strong></div>
       <h2>${data.chooseLanguage}</h2>
-      <div class="language-card"><strong>◎ EN</strong><span>${data.useEnglish}</span><b>›</b></div>
-      <div class="language-card"><strong>◎ ES</strong><span>${data.useSpanish}</span><b>›</b></div>
+      <div class="language-card" data-lang="en"><strong>◎ EN</strong><span>${data.useEnglish}</span><b>›</b></div>
+      <div class="language-card" data-lang="es"><strong>◎ ES</strong><span>${data.useSpanish}</span><b>›</b></div>
       <p class="language-baseline">Current app baseline from the screenshot: two choices.</p>
+      <div class="language-expansion">
       <h3>${data.proposed}</h3>
       ${expandedLanguageOptions.map(([code, label]) => `
-        <div class="language-card proposed"><strong>◎ ${code}</strong><span>${label}</span><b>›</b></div>
+        <div class="language-card proposed" data-lang="${code.toLowerCase()}"><strong>◎ ${code}</strong><span>${label}</span><b>›</b></div>
       `).join("")}
+      </div>
     </section>
   `;
 }
@@ -771,12 +891,33 @@ function locationsScreen(data) {
     <section class="app-content">
       <div class="rating-banner"><button>×</button><strong>${data.rate}</strong><span>${data.rateBody}</span><div>👍 👎</div></div>
       <h3>${data.liveLocation}</h3>
-      <div class="location-card">⌖ Saint Petersburg, Maine <b>›</b></div>
-      <div class="location-card">Boston, Massachusetts <b>›</b></div>
-      <div class="location-card">New York <b>›</b></div>
+      <button class="location-card location-card-stacked" type="button" data-screen="locationDetail">
+        <span class="location-main"><span class="nav-arrow">⌖</span> Saint Petersburg, Maine <b>›</b></span>
+        <span class="location-service"><span>i</span>${data.servicesAvailable}</span>
+      </button>
+      <button class="location-card" type="button" data-screen="locationDetail">Boston, Massachusetts <b>›</b></button>
+      <button class="location-card" type="button">New York <b>›</b></button>
       <div class="sticky-add">+ ${data.addLocation}</div>
     </section>
     ${bottomNav(data, "locations")}
+  `;
+}
+
+function locationDetailScreen(data) {
+  return `
+    <section class="location-detail">
+      <button class="floating-back" type="button" data-screen="locations">‹</button>
+      <div class="location-title-row"><span>●</span><h2>Boston, Massachusetts</h2></div>
+      <div class="no-alert-panel"><strong>${data.noAlertsShort}</strong><p>${data.noAlertsLocation}</p></div>
+      <h3>${data.locationSettings}</h3>
+      <div class="settings-card">
+        <button type="button">${data.nickname}<b>›</b></button>
+        <button type="button">${data.setupAlerts}<b>›</b></button>
+      </div>
+      <h3>${data.stateEmergencyContact} <span class="info-dot">i</span></h3>
+      <div class="location-card contact-card">Massachusetts <b>›</b></div>
+      <a class="delete-location">${data.deleteLocation}</a>
+    </section>
   `;
 }
 
@@ -795,26 +936,107 @@ function alertsScreen(data) {
 }
 
 function prepareScreen(data) {
+  const hazards = [
+    [data.essentials, "bag", "#3d5b92"],
+    [data.extremeHeat, "thermo", "#d83b18"],
+    [data.powerOutage, "bolt", "#315b91"],
+    [data.extremeCold, "house", "#3b7fb3"],
+    [data.hurricane, "storm", "#1976c9"],
+    [data.flood, "waves", "#3b7fb3"],
+    [data.earthquake, "quake", "#34834a"],
+    [data.tornado, "twister", "#2e623b"]
+  ];
   return `
-    <section class="prepare-screen">
-      <div class="prepare-illo">👥</div>
-      <h2>${data.prepareTitle}</h2>
-      <div class="prepare-card"><strong>${data.improved}</strong><p>${data.improvedBody}</p></div>
-      <div class="prepare-card"><strong>${data.plans}</strong><p>${data.plansBody}</p></div>
-      <button>${data.getStarted}</button>
+    <section class="prepare-app">
+      <header class="prepare-header">
+        <div class="app-language">◎ ${data.code}</div>
+        <h2>${data.prepare}</h2>
+        <div class="prepare-tabs"><span>${data.learnTab}</span><span>${data.planTab} <b>${data.newLabel}</b></span></div>
+      </header>
+      <div class="hazard-list">
+        <h3>${data.allHazards} <span>✓ 0/14 ${data.complete}</span></h3>
+        ${hazards.map(([label, icon, color]) => `<button type="button" class="hazard-card" style="--hazard:${color}"><strong>${label}</strong><span class="${icon}"></span></button>`).join("")}
+      </div>
     </section>
     ${bottomNav(data, "prepare")}
   `;
 }
 
+function mapsScreen(data) {
+  return `
+    ${header(data, data.mapsShelters)}
+    <section class="map-screen">
+      <div class="map-tabs"><span>${data.maps}</span><span>${data.shelters}</span></div>
+      <div class="fake-map">
+        <span class="map-label north">NORTH<br>AMERICA</span>
+        <span class="map-label mexico">Mexico City</span>
+        <span class="map-label tampa">Tampa</span>
+        <span class="map-marker m1">✚</span>
+        <span class="map-marker m2">✚</span>
+        <span class="map-marker m3">✚</span>
+        <span class="map-pin p1"></span>
+        <span class="map-pin p2"></span>
+        <div class="map-controls"><button>⌖</button><button>↻</button></div>
+        <div class="map-info">i</div>
+        <div class="overlay-pill">${data.overlay}: <strong>${data.hurricaneTracker}</strong></div>
+      </div>
+      <div class="map-warning">${data.noHurricanes}</div>
+    </section>
+    ${bottomNav(data, "maps")}
+  `;
+}
+
+function infoScreen(data) {
+  return `
+    ${header(data, data.info)}
+    <section class="app-content info-screen">
+      <h3>${data.featured}</h3>
+      <div class="sponsor-card">
+        <div class="state-farm-logo">StateFarm</div>
+        <strong>${data.sponsor}</strong>
+        <p>${data.sponsorBody}</p>
+        <button type="button" data-screen="sponsors">${data.findOutMore} ↪</button>
+      </div>
+      <div class="pager"><span></span><i></i><i></i></div>
+      <h3>${data.partners}</h3>
+      <div class="settings-card partner-card">
+        <button type="button">🤝 ${data.endorsingPartners}<b>›</b></button>
+        <button type="button" data-screen="sponsors">🤝 ${data.sponsoringPartners}<b>›</b></button>
+      </div>
+      <h3>${data.tools}</h3>
+      <div class="location-card">👥 ${data.imSafe}<b>›</b></div>
+    </section>
+    ${bottomNav(data, "info")}
+  `;
+}
+
+function sponsorsScreen(data) {
+  return `
+    <section class="detail-article">
+      <header class="article-bar"><button type="button" data-screen="info">‹ ${data.back}</button><strong>${data.sponsoringPartners}</strong></header>
+      <article>
+        <h2>${data.sponsoringPartners}</h2>
+        <h3>${data.sponsorIntro}</h3>
+        <div class="duke-logo">DUKE<br><span>ENERGY</span><small>FOUNDATION</small></div>
+        <p>${data.sponsorCopy}</p>
+        <p>More information at <u>duke-energy.com/foundation</u>.</p>
+        <h3>State Farm® ${data.sponsor.toLowerCase()}</h3>
+        <div class="state-farm-logo detail-logo">StateFarm</div>
+      </article>
+    </section>
+  `;
+}
+
 function alertDetailScreen(data) {
+  const groups = [data.airQuality, data.beach, data.dust, data.earthquake, data.fog, data.highAlert, data.highWinds, data.tropicalCyclones, data.severeThunderstorms, data.tornado, data.tsunami, data.volcano, data.wildfires];
   return `
     <section class="alert-definitions">
       <div class="sheet-title"><button>×</button><strong>${data.learn}</strong></div>
-      ${["Air Quality", "Beach", "Dust", "Earthquake", "Severe Thunderstorms"].map((item, index) => `
-        <div class="hazard-row ${index === 4 ? "open" : ""}"><span>${["≋", "≋", "≋", "⌂", "☁"][index]}</span><strong>${item}</strong><b>${index === 4 ? "⌃" : "⌄"}</b></div>
+      ${groups.map((item, index) => `
+        <div class="hazard-row ${index === 8 || index === 12 ? "open" : ""}"><span>${["≋", "≋", "≋", "⌂", "☁", "♨", "⚑", "◉", "☁", "◌", "◒", "▲", "♨"][index]}</span><strong>${item}</strong><b>${index === 8 || index === 12 ? "⌃" : "⌄"}</b></div>
+        ${index === 8 ? `<div class="warning-row">${data.detailTitle}<b>›</b></div><div class="warning-row">${data.severeThunderstormWatch}<b>›</b></div>` : ""}
+        ${index === 12 ? `<div class="warning-row">${data.smokeAdvisory}<b>›</b></div><div class="warning-row">${data.fireWeather}<b>›</b></div><div class="warning-row">${data.redFlag}<b>›</b></div>` : ""}
       `).join("")}
-      <div class="warning-row">${data.detailTitle}<b>›</b></div>
       <div class="definition-sheet">
         <button>×</button>
         <h2>${data.detailTitle}</h2>
@@ -829,16 +1051,38 @@ function render() {
   document.documentElement.lang = mirrorLanguage.value;
   document.documentElement.dir = data.dir;
   const screen = screenSelect.value;
+  document.body.dataset.screen = screen;
   const views = {
     language: languageScreen,
     locations: locationsScreen,
+    locationDetail: locationDetailScreen,
     alerts: alertsScreen,
     prepare: prepareScreen,
+    maps: mapsScreen,
+    info: infoScreen,
+    sponsors: sponsorsScreen,
     alertDetail: alertDetailScreen
   };
-  phoneScreen.innerHTML = views[screen](data);
+  phoneScreen.innerHTML = (views[screen] || views.language)(data);
 }
 
 screenSelect.addEventListener("change", render);
 mirrorLanguage.addEventListener("change", render);
+phoneScreen.addEventListener("click", (event) => {
+  const screenTarget = event.target.closest("[data-screen]");
+  if (screenTarget) {
+    screenSelect.value = screenTarget.dataset.screen;
+    render();
+    phoneScreen.scrollTop = 0;
+    return;
+  }
+
+  const languageTarget = event.target.closest("[data-lang]");
+  if (languageTarget && languageMeta[languageTarget.dataset.lang]) {
+    mirrorLanguage.value = languageTarget.dataset.lang;
+    screenSelect.value = "locations";
+    render();
+    phoneScreen.scrollTop = 0;
+  }
+});
 render();

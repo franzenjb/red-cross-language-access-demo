@@ -652,6 +652,118 @@ const copy = {
   }
 };
 
+const recordHandoffCopy = {
+  en: {
+    recordTitle: "English record for Red Cross systems",
+    recordBody: "The applicant completes the form in their preferred language. The staged packet creates an English version for Red Cross records and keeps the original-language answers attached for review.",
+    stageToast: "English record staged for Red Cross review; original-language answers remain attached."
+  },
+  ko: {
+    recordTitle: "적십자 시스템용 영어 기록",
+    recordBody: "신청자는 선호하는 언어로 양식을 작성합니다. 준비된 패킷은 적십자 기록용 영어 버전을 만들고, 검토를 위해 원문 답변을 함께 보관합니다.",
+    stageToast: "적십자 검토용 영어 기록이 준비되었고 원문 답변도 함께 보관됩니다."
+  },
+  es: {
+    recordTitle: "Registro en inglés para los sistemas de Red Cross",
+    recordBody: "La persona completa el formulario en su idioma preferido. El paquete preparado crea una versión en inglés para los registros de Red Cross y conserva las respuestas originales para revisión.",
+    stageToast: "Registro en inglés preparado para revisión de Red Cross; las respuestas originales siguen adjuntas."
+  },
+  zh: {
+    recordTitle: "供 Red Cross 系统使用的英文记录",
+    recordBody: "申请人使用自己偏好的语言填写表格。准备好的资料包会生成供 Red Cross 记录使用的英文版本，并保留原语言答案以便审核。",
+    stageToast: "已准备供 Red Cross 审核的英文记录；原语言答案仍随附。"
+  },
+  tl: {
+    recordTitle: "English record para sa mga sistema ng Red Cross",
+    recordBody: "Pinupunan ng aplikante ang form sa wikang pinakakomportable sa kanya. Gumagawa ang inihandang packet ng English version para sa Red Cross records at nakakabit pa rin ang orihinal na sagot para sa review.",
+    stageToast: "Naihanda ang English record para sa Red Cross review; nakakabit pa rin ang orihinal na sagot."
+  },
+  vi: {
+    recordTitle: "Hồ sơ tiếng Anh cho hệ thống Red Cross",
+    recordBody: "Người nộp đơn điền biểu mẫu bằng ngôn ngữ họ muốn dùng. Gói hồ sơ được chuẩn bị sẽ tạo bản tiếng Anh cho hồ sơ Red Cross và giữ kèm câu trả lời gốc để xem xét.",
+    stageToast: "Hồ sơ tiếng Anh đã được chuẩn bị để Red Cross xem xét; câu trả lời gốc vẫn được đính kèm."
+  },
+  ar: {
+    recordTitle: "سجل باللغة الإنجليزية لأنظمة Red Cross",
+    recordBody: "يملأ مقدم الطلب النموذج بلغته المفضلة. تنشئ الحزمة المجهزة نسخة باللغة الإنجليزية لسجلات Red Cross وتبقي الإجابات باللغة الأصلية مرفقة للمراجعة.",
+    stageToast: "تم تجهيز سجل إنجليزي لمراجعة Red Cross؛ وتظل الإجابات الأصلية مرفقة."
+  },
+  fr: {
+    recordTitle: "Dossier en anglais pour les systemes Red Cross",
+    recordBody: "La personne remplit le formulaire dans la langue qu'elle prefere. Le dossier prepare cree une version anglaise pour les dossiers Red Cross et conserve les reponses originales pour revision.",
+    stageToast: "Dossier anglais prepare pour la revision Red Cross; les reponses originales restent jointes."
+  },
+  pt: {
+    recordTitle: "Registro em inglês para os sistemas Red Cross",
+    recordBody: "A pessoa preenche o formulario no idioma que prefere. O pacote preparado cria uma versao em ingles para os registros Red Cross e mantem as respostas originais anexadas para revisao.",
+    stageToast: "Registro em ingles preparado para revisao Red Cross; as respostas originais permanecem anexadas."
+  },
+  hi: {
+    recordTitle: "Red Cross सिस्टम के लिए अंग्रेज़ी रिकॉर्ड",
+    recordBody: "आवेदक अपनी पसंदीदा भाषा में फॉर्म भरता है। तैयार पैकेट Red Cross रिकॉर्ड के लिए अंग्रेज़ी संस्करण बनाता है और समीक्षा के लिए मूल भाषा के उत्तर साथ रखता है।",
+    stageToast: "Red Cross समीक्षा के लिए अंग्रेज़ी रिकॉर्ड तैयार है; मूल भाषा के उत्तर साथ संलग्न हैं."
+  },
+  ht: {
+    recordTitle: "Dosye angle pou sistèm Red Cross",
+    recordBody: "Aplikan an ranpli fòm nan nan lang li prefere a. Pake ki prepare a kreye yon vèsyon angle pou dosye Red Cross epi kenbe repons nan lang orijinal la atache pou revizyon.",
+    stageToast: "Dosye angle prepare pou revizyon Red Cross; repons lang orijinal yo rete atache."
+  },
+  ru: {
+    recordTitle: "Английская запись для систем Red Cross",
+    recordBody: "Заявитель заполняет форму на предпочитаемом языке. Подготовленный пакет создает английскую версию для записей Red Cross и сохраняет ответы на исходном языке для проверки.",
+    stageToast: "Английская запись подготовлена для проверки Red Cross; ответы на исходном языке остаются приложенными."
+  },
+  de: {
+    recordTitle: "Englischer Datensatz fur Red Cross Systeme",
+    recordBody: "Die antragstellende Person fullt das Formular in ihrer bevorzugten Sprache aus. Das vorbereitete Paket erstellt eine englische Version fur Red Cross Unterlagen und behalt die Originalantworten zur Prufung bei.",
+    stageToast: "Englischer Datensatz fur Red Cross Prufung vorbereitet; Originalantworten bleiben angehangt."
+  },
+  te: {
+    recordTitle: "Red Cross వ్యవస్థల కోసం ఇంగ్లీష్ రికార్డు",
+    recordBody: "దరఖాస్తుదారు తనకు ఇష్టమైన భాషలో ఫారమ్ పూర్తి చేస్తారు. సిద్ధం చేసిన ప్యాకెట్ Red Cross రికార్డుల కోసం ఇంగ్లీష్ వెర్షన్ సృష్టిస్తుంది మరియు సమీక్ష కోసం అసలు భాష సమాధానాలను జతచేస్తుంది.",
+    stageToast: "Red Cross సమీక్ష కోసం ఇంగ్లీష్ రికార్డు సిద్ధమైంది; అసలు భాష సమాధానాలు జతచేయబడ్డాయి."
+  },
+  ur: {
+    recordTitle: "Red Cross نظاموں کے لیے انگریزی ریکارڈ",
+    recordBody: "درخواست دہندہ فارم اپنی پسندیدہ زبان میں مکمل کرتا ہے۔ تیار کردہ پیکٹ Red Cross ریکارڈز کے لیے انگریزی ورژن بناتا ہے اور جائزے کے لیے اصل زبان کے جوابات ساتھ رکھتا ہے۔",
+    stageToast: "Red Cross جائزے کے لیے انگریزی ریکارڈ تیار ہے؛ اصل زبان کے جوابات منسلک رہتے ہیں۔"
+  },
+  it: {
+    recordTitle: "Record in inglese per i sistemi Red Cross",
+    recordBody: "La persona compila il modulo nella lingua che preferisce. Il pacchetto preparato crea una versione in inglese per gli archivi Red Cross e conserva le risposte originali per la revisione.",
+    stageToast: "Record in inglese preparato per la revisione Red Cross; le risposte originali restano allegate."
+  },
+  pl: {
+    recordTitle: "Angielski rekord dla systemów Red Cross",
+    recordBody: "Osoba składająca wniosek wypełnia formularz w preferowanym języku. Przygotowany pakiet tworzy wersję angielską do dokumentacji Red Cross i zachowuje oryginalne odpowiedzi do przeglądu.",
+    stageToast: "Angielski rekord przygotowany do przeglądu Red Cross; oryginalne odpowiedzi pozostają załączone."
+  },
+  bn: {
+    recordTitle: "Red Cross সিস্টেমের জন্য ইংরেজি রেকর্ড",
+    recordBody: "আবেদনকারী নিজের পছন্দের ভাষায় ফর্ম পূরণ করেন। প্রস্তুত প্যাকেটটি Red Cross রেকর্ডের জন্য একটি ইংরেজি সংস্করণ তৈরি করে এবং পর্যালোচনার জন্য মূল ভাষার উত্তর সংযুক্ত রাখে।",
+    stageToast: "Red Cross পর্যালোচনার জন্য ইংরেজি রেকর্ড প্রস্তুত; মূল ভাষার উত্তর সংযুক্ত আছে।"
+  },
+  gu: {
+    recordTitle: "Red Cross સિસ્ટમ માટે અંગ્રેજી રેકોર્ડ",
+    recordBody: "અરજદાર પોતાની પસંદગીની ભાષામાં ફોર્મ પૂર્ણ કરે છે. તૈયાર પેકેટ Red Cross રેકોર્ડ માટે અંગ્રેજી આવૃત્તિ બનાવે છે અને સમીક્ષા માટે મૂળ ભાષાના જવાબો જોડેલા રાખે છે.",
+    stageToast: "Red Cross સમીક્ષા માટે અંગ્રેજી રેકોર્ડ તૈયાર છે; મૂળ ભાષાના જવાબો જોડેલા છે."
+  },
+  ja: {
+    recordTitle: "Red Crossシステム用の英語記録",
+    recordBody: "申請者は希望する言語でフォームに入力します。準備されたパケットはRed Cross記録用の英語版を作成し、確認用に元の言語の回答も添付したままにします。",
+    stageToast: "Red Cross確認用の英語記録を準備しました。元の言語の回答も添付されています。"
+  },
+  fa: {
+    recordTitle: "رکورد انگلیسی برای سامانه‌های Red Cross",
+    recordBody: "متقاضی فرم را به زبان دلخواه خود تکمیل می‌کند. بسته آماده‌شده نسخه انگلیسی را برای سوابق Red Cross ایجاد می‌کند و پاسخ‌های زبان اصلی را برای بازبینی پیوست نگه می‌دارد.",
+    stageToast: "رکورد انگلیسی برای بازبینی Red Cross آماده شد؛ پاسخ‌های زبان اصلی همچنان پیوست هستند."
+  }
+};
+
+Object.entries(recordHandoffCopy).forEach(([language, phrases]) => {
+  Object.assign(copy[language], phrases);
+});
+
 const params = new URLSearchParams(window.location.search);
 
 if (params.get("embed") === "phone") {
@@ -689,7 +801,7 @@ function showToast(message) {
 
 languageSelect.addEventListener("change", updateLanguage);
 document.querySelector("#stageApplication").addEventListener("click", () => {
-  showToast("Application packet staged with selected language, source text, and audit fields.");
+  showToast(currentCopy().stageToast);
 });
 
 updateLanguage();

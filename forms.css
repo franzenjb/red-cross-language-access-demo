@@ -271,6 +271,7 @@ textarea {
 }
 
 .notice,
+.record-note,
 .form-section,
 .source-pane,
 .translated-pane,
@@ -296,6 +297,25 @@ textarea {
 .notice p {
   margin: 0;
   color: var(--muted);
+}
+
+.record-note {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-left: 5px solid var(--red);
+}
+
+.record-note strong {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.record-note p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .application-form {
@@ -1889,9 +1909,11 @@ body[data-screen="prepare"] .status-icons {
 }
 
 .intake-embed-root .notice,
+.intake-embed-root .record-note,
 .intake-embed-root .form-section,
 .intake-embed-root .submit-row,
 .intake-embed .notice,
+.intake-embed .record-note,
 .intake-embed .form-section,
 .intake-embed .submit-row {
   border-radius: 8px;

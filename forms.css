@@ -1174,6 +1174,58 @@ textarea {
   max-height: none;
 }
 
+.intake-embed,
+.intake-embed-root {
+  background: #f5f7fa;
+}
+
+.intake-embed-root .side-menu,
+.intake-embed-root .standalone-nav,
+.intake-embed .side-menu,
+.intake-embed .standalone-nav {
+  display: none;
+}
+
+.intake-embed-root .intake-page,
+.intake-embed .intake-page {
+  width: 100%;
+  padding: 18px 16px 28px;
+}
+
+.intake-embed-root .form-header,
+.intake-embed .form-header {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.intake-embed-root .form-mark,
+.intake-embed .form-mark {
+  width: 46px;
+  height: 46px;
+  font-size: 31px;
+}
+
+.intake-embed-root .form-header h1,
+.intake-embed .form-header h1 {
+  font-size: clamp(26px, 9vw, 34px);
+  line-height: 1.06;
+}
+
+.intake-embed-root .language-control,
+.intake-embed .language-control {
+  width: 100%;
+}
+
+.intake-embed-root .notice,
+.intake-embed-root .form-section,
+.intake-embed-root .submit-row,
+.intake-embed .notice,
+.intake-embed .form-section,
+.intake-embed .submit-row {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
 @media (min-width: 951px) {
   body.prototype-shell {
     padding-left: 286px;

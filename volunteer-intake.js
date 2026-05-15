@@ -652,8 +652,18 @@ const copy = {
   }
 };
 
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("embed") === "phone") {
+  document.body.classList.add("intake-embed");
+}
+
 const languageSelect = document.querySelector("#language");
 const toast = document.querySelector("#toast");
+
+if (params.get("lang") && copy[params.get("lang")]) {
+  languageSelect.value = params.get("lang");
+}
 
 function currentCopy() {
   return { ...copy.en, ...(copy[languageSelect.value] || {}) };

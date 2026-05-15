@@ -407,6 +407,7 @@ h3 {
 .registry-section,
 .recommendation-section {
   padding: 70px 0;
+  scroll-margin-top: 24px;
 }
 
 .section-intro {
@@ -455,6 +456,7 @@ h3 {
 .mockup-card {
   overflow: hidden;
   padding: 18px;
+  scroll-margin-top: 24px;
 }
 
 .mockup-heading {
@@ -1146,9 +1148,26 @@ iframe {
 }
 
 @media (max-width: 680px) {
+  .leadership-hero {
+    overflow: visible;
+    padding-top: 121px;
+  }
+
   .leadership-nav {
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 60;
+    width: 100%;
+    border-bottom: 1px solid var(--line);
+    background: #fff;
     padding: 18px 0 12px;
+  }
+
+  .brand-link {
+    width: min(100vw - 28px, 1200px);
+    margin: 0 auto;
   }
 
   .nav-links {
@@ -1156,26 +1175,45 @@ iframe {
   }
 
   .demo-menu {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(100vw - 28px, 1200px);
+    position: fixed;
+    top: 69px;
+    left: 0;
+    z-index: 55;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
     gap: 6px;
-    padding-bottom: 14px;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+    background: #fff;
+    padding: 8px 14px 10px;
+    -webkit-overflow-scrolling: touch;
   }
 
   .demo-menu span {
-    grid-column: 1 / -1;
-    width: 100%;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    align-self: stretch;
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin-right: 2px;
+    background: #fff;
+    padding-right: 8px;
+    white-space: nowrap;
   }
 
   .demo-menu a,
   .screen-menu a {
-    min-width: 0;
+    flex: 0 0 auto;
     min-height: 34px;
     padding: 0 10px;
     font-size: 12px;
     text-align: center;
-    white-space: normal;
+    white-space: nowrap;
     overflow-wrap: anywhere;
   }
 
@@ -1235,12 +1273,24 @@ iframe {
     grid-template-columns: 1fr auto;
   }
 
+  .screen-menu {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mockup-card {
+    scroll-margin-top: 128px;
+  }
+
   .hero-grid,
   .science-section,
   .mockup-section,
   .registry-section,
   .recommendation-section {
     width: min(100vw - 28px, 1200px);
+    scroll-margin-top: 128px;
   }
 
   .registry-toolbar {
@@ -1300,12 +1350,17 @@ iframe {
   }
 
   .desktop-frame {
-    height: 660px;
+    width: min(390px, 100%);
+    height: 720px;
+    margin: 0 auto;
+    border: 10px solid #111;
+    border-radius: 38px;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.2);
   }
 
   .phone-frame {
     height: 720px;
-    border-width: 0;
-    border-radius: 8px;
+    border-width: 10px;
+    border-radius: 38px;
   }
 }

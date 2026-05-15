@@ -29,26 +29,46 @@ const initialSection = initialHash
 
 if (initialSection) {
   setCurrentView(initialSection.dataset.sectionView);
+  if (initialHash) {
+    window.setTimeout(() => {
+      manualSelectionUntil = Date.now() + 500;
+      initialSection.scrollIntoView({ block: "start" });
+      setCurrentView(initialSection.dataset.sectionView);
+    }, 50);
+  }
 }
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    if (Date.now() < manualSelectionUntil) {
-      return;
-    }
+let scrollTicking = false;
 
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+function currentOffset() {
+  return window.matchMedia("(max-width: 680px)").matches ? 140 : 90;
+}
 
-    if (visible) {
-      setCurrentView(visible.target.dataset.sectionView);
-    }
-  },
-  {
-    rootMargin: "-20% 0px -55% 0px",
-    threshold: [0.1, 0.35, 0.6],
-  },
-);
+function updateCurrentFromScroll() {
+  if (Date.now() < manualSelectionUntil) {
+    scrollTicking = false;
+    return;
+  }
 
-sections.forEach((section) => observer.observe(section));
+  const offset = currentOffset();
+  const current = [...sections].reduce((active, section) => {
+    return section.getBoundingClientRect().top <= offset ? section : active;
+  }, sections[0]);
+
+  if (current) {
+    setCurrentView(current.dataset.sectionView);
+  }
+
+  scrollTicking = false;
+}
+
+function queueCurrentUpdate() {
+  if (!scrollTicking) {
+    scrollTicking = true;
+    window.requestAnimationFrame(updateCurrentFromScroll);
+  }
+}
+
+window.addEventListener("scroll", queueCurrentUpdate, { passive: true });
+window.addEventListener("resize", queueCurrentUpdate);
+window.setTimeout(queueCurrentUpdate, 100);

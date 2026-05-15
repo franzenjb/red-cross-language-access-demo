@@ -262,6 +262,7 @@ a {
 .hero-grid,
 .science-section,
 .mockup-section,
+.registry-section,
 .recommendation-section {
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
@@ -357,6 +358,7 @@ h3 {
 
 .hero-proof div,
 .mockup-card,
+.registry-panel,
 .recommendation-grid div,
 .language-rank {
   border: 1px solid var(--line);
@@ -385,6 +387,7 @@ h3 {
 
 .science-section,
 .mockup-section,
+.registry-section,
 .recommendation-section {
   padding: 70px 0;
 }
@@ -490,6 +493,100 @@ iframe {
   background: #fff;
 }
 
+.registry-panel {
+  overflow: hidden;
+}
+
+.registry-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid var(--line);
+  padding: 18px;
+}
+
+.registry-toolbar strong,
+.registry-toolbar span {
+  display: block;
+}
+
+.registry-toolbar strong {
+  margin-bottom: 4px;
+  font-size: 18px;
+}
+
+.registry-toolbar span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.registry-toolbar a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 1px solid rgba(216, 41, 32, 0.28);
+  border-radius: 8px;
+  background: #fff6f5;
+  color: var(--red-dark);
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 840;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.registry-table-wrap {
+  max-height: 520px;
+  overflow: auto;
+}
+
+.registry-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+.registry-table th,
+.registry-table td {
+  max-width: 360px;
+  border-right: 1px solid var(--soft);
+  border-bottom: 1px solid var(--soft);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.registry-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fbfbfc;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 860;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.registry-table tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: #fff;
+  color: var(--red-dark);
+  font-weight: 840;
+}
+
+.registry-table tbody tr:nth-child(even) td,
+.registry-table tbody tr:nth-child(even) th {
+  background: #fcfdff;
+}
+
 .recommendation-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -578,8 +675,18 @@ iframe {
   .hero-grid,
   .science-section,
   .mockup-section,
+  .registry-section,
   .recommendation-section {
     width: min(100vw - 28px, 1200px);
+  }
+
+  .registry-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .registry-toolbar a {
+    width: 100%;
   }
 
   .rank-row.header {

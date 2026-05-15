@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "check": "node --check app.js && node --check volunteer-intake.js && node --check emergency-alert-mirror.js && node --check leadership-nav.js",
+    "check": "node --check app.js && node --check volunteer-intake.js && node --check emergency-alert-mirror.js && node --check leadership-nav.js && node --check phrase-registry.js && node --check scripts/build-phrase-registry.mjs",
     "serve": "python3 -m http.server 8001",
     "deploy:github": "bash scripts/deploy-github-pages.sh",
     "deploy:vercel": "bash scripts/deploy-vercel.sh"

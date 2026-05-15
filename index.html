@@ -23,6 +23,7 @@
           <a class="side-link active" href="#top" data-view="Overview">Overview</a>
           <a class="side-link" href="#science" data-view="Why These Languages">Why These Languages</a>
           <a class="side-link" href="#mockups" data-view="Both Demos Side By Side">Both Demos Side By Side</a>
+          <a class="side-link" href="#phrase-review" data-view="Phrase Review">Phrase Review</a>
           <a class="side-link" href="#recommendation" data-view="Build Path">Build Path</a>
         </nav>
 
@@ -43,6 +44,7 @@
             <a href="#top" data-view="Overview">Overview</a>
             <a href="#science" data-view="Why These Languages">Language Data</a>
             <a href="#mockups" data-view="Both Demos Side By Side">Both Mockups</a>
+            <a href="#phrase-review" data-view="Phrase Review">Phrase Review</a>
             <a href="#recommendation" data-view="Build Path">Build Path</a>
           </div>
         </nav>
@@ -52,6 +54,7 @@
           <a href="#top" data-view="Overview">Overview</a>
           <a href="#science" data-view="Why These Languages">Why These Languages</a>
           <a href="#mockups" data-view="Both Demos Side By Side">Both Demos Side By Side</a>
+          <a href="#phrase-review" data-view="Phrase Review">Phrase Review</a>
           <a href="volunteer-intake.html">Application Form</a>
           <a href="emergency-alert-mirror.html?screen=language&lang=en">Emergency App Demo</a>
         </nav>
@@ -171,6 +174,37 @@
         </div>
       </section>
 
+      <section id="phrase-review" class="registry-section" data-section-view="Phrase Review">
+        <div class="section-intro">
+          <p class="eyebrow">Phrase review registry</p>
+          <h2>Approve safety language before programming it into the app.</h2>
+          <p>
+            This is the working spreadsheet lane: English source phrases stay attached to every translation,
+            and every row carries risk level, approval state, reviewer, date, and notes before release.
+          </p>
+        </div>
+
+        <div class="registry-panel">
+          <div class="registry-toolbar">
+            <div>
+              <strong>Emergency Phrase Review CSV</strong>
+              <span id="phraseRegistryMeta">Loading phrase registry...</span>
+            </div>
+            <a href="emergency-phrase-review.csv" download>Download CSV</a>
+          </div>
+
+          <div class="registry-table-wrap" aria-label="Embedded emergency phrase review spreadsheet">
+            <table id="phraseRegistryTable" class="registry-table">
+              <tbody>
+                <tr>
+                  <td>Loading phrase review registry...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <section id="recommendation" class="recommendation-section" data-section-view="Build Path">
         <div class="section-intro">
           <p class="eyebrow">Recommended build path</p>
@@ -196,6 +230,7 @@
         </div>
       </section>
     </main>
+    <script src="phrase-registry.js"></script>
     <script src="leadership-nav.js"></script>
   </body>
 </html>

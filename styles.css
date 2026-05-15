@@ -269,11 +269,12 @@ a {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  gap: 36px;
-  align-items: end;
-  padding: 76px 0 68px;
+  display: block;
+  padding: 64px 0 60px;
+}
+
+.hero-copy {
+  max-width: 1040px;
 }
 
 .eyebrow {
@@ -325,7 +326,7 @@ h3 {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  margin-top: 22px;
 }
 
 .primary-link,
@@ -353,7 +354,10 @@ h3 {
 
 .hero-proof {
   display: grid;
-  gap: 10px;
+  grid-template-columns: minmax(260px, 1.25fr) repeat(2, minmax(180px, 0.85fr));
+  gap: 12px;
+  max-width: 1000px;
+  margin-top: 24px;
 }
 
 .hero-proof div,
@@ -371,17 +375,28 @@ h3 {
   padding: 18px;
 }
 
+.hero-proof div:first-child {
+  border-color: rgba(216, 41, 32, 0.32);
+  background: #fff;
+  padding: 22px;
+}
+
 .hero-proof strong {
   display: block;
   color: var(--red);
-  font-size: 42px;
+  font-size: 44px;
   line-height: 1;
+}
+
+.hero-proof div:first-child strong {
+  font-size: clamp(56px, 8vw, 76px);
 }
 
 .hero-proof span {
   display: block;
   margin-top: 6px;
   color: var(--muted);
+  font-size: 16px;
   line-height: 1.35;
 }
 
@@ -1111,6 +1126,10 @@ iframe {
 
   .hero-grid {
     padding-top: 48px;
+  }
+
+  .hero-proof {
+    grid-template-columns: 1fr;
   }
 
   .desktop-frame {

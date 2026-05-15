@@ -536,6 +536,12 @@ iframe {
   }
 }
 
+@media (min-width: 951px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
 @media (max-width: 680px) {
   .leadership-nav {
     align-items: flex-start;

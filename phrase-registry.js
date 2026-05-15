@@ -3,6 +3,10 @@ const registryMeta = document.querySelector("#phraseRegistryMeta");
 const saveStatus = document.querySelector("#phraseSaveStatus");
 const exportButton = document.querySelector("#exportPhraseReview");
 const resetButton = document.querySelector("#resetPhraseReview");
+const resetDialog = document.querySelector("#resetPhraseDialog");
+const resetConfirmText = document.querySelector("#resetPhraseConfirmText");
+const resetConfirmButton = document.querySelector("#confirmPhraseReset");
+const resetCancelButton = document.querySelector("#cancelPhraseReset");
 const storageKey = "red-cross-language-phrase-review-v1";
 
 let registry = null;
@@ -183,9 +187,25 @@ function downloadJson() {
 }
 
 function resetRegistry() {
-  if (!window.confirm("Clear local phrase review edits in this browser?")) return;
   localStorage.removeItem(storageKey);
   window.location.reload();
+}
+
+function openResetDialog() {
+  if (!resetDialog || !resetConfirmText || !resetConfirmButton) return;
+  resetConfirmText.value = "";
+  resetConfirmButton.disabled = true;
+  resetDialog.showModal();
+  resetConfirmText.focus();
+}
+
+function closeResetDialog() {
+  resetDialog?.close();
+}
+
+function updateResetConfirmation() {
+  if (!resetConfirmText || !resetConfirmButton) return;
+  resetConfirmButton.disabled = resetConfirmText.value.trim() !== "RESET";
 }
 
 if (registryTable) {
@@ -204,4 +224,7 @@ if (registryTable) {
 }
 
 exportButton?.addEventListener("click", downloadJson);
-resetButton?.addEventListener("click", resetRegistry);
+resetButton?.addEventListener("click", openResetDialog);
+resetCancelButton?.addEventListener("click", closeResetDialog);
+resetConfirmText?.addEventListener("input", updateResetConfirmation);
+resetConfirmButton?.addEventListener("click", resetRegistry);

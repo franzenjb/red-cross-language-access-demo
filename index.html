@@ -193,7 +193,7 @@
             </div>
             <div class="registry-actions">
               <button id="exportPhraseReview" type="button">Export Edited JSON</button>
-              <button id="resetPhraseReview" type="button">Reset Local Edits</button>
+              <button id="resetPhraseReview" class="danger-trigger" type="button">Advanced: Clear Draft</button>
             </div>
           </div>
 
@@ -207,6 +207,23 @@
             </table>
           </div>
         </div>
+
+        <dialog id="resetPhraseDialog" class="danger-dialog" aria-labelledby="resetPhraseDialogTitle">
+          <form method="dialog">
+            <p class="eyebrow">Destructive action</p>
+            <h3 id="resetPhraseDialogTitle">Clear local phrase edits?</h3>
+            <p>
+              This only clears edits saved in this browser. Export the edited JSON first if this review work should be
+              preserved.
+            </p>
+            <label for="resetPhraseConfirmText">Type RESET to confirm</label>
+            <input id="resetPhraseConfirmText" type="text" autocomplete="off" inputmode="latin" spellcheck="false">
+            <div class="danger-dialog-actions">
+              <button id="cancelPhraseReset" type="button">Cancel</button>
+              <button id="confirmPhraseReset" class="danger-confirm" type="button" disabled>Clear Local Draft</button>
+            </div>
+          </form>
+        </dialog>
       </section>
 
       <section id="recommendation" class="recommendation-section" data-section-view="Build Path">

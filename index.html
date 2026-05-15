@@ -179,18 +179,22 @@
           <p class="eyebrow">Phrase review registry</p>
           <h2>Approve safety language before programming it into the app.</h2>
           <p>
-            This is the working spreadsheet lane: English source phrases stay attached to every translation,
-            and every row carries risk level, approval state, reviewer, date, and notes before release.
+            This is an editable in-app review table, not an Excel-dependent CSV. English source phrases stay attached
+            to every translation, and every row carries risk level, approval state, reviewer, date, and notes before release.
           </p>
         </div>
 
         <div class="registry-panel">
           <div class="registry-toolbar">
             <div>
-              <strong>Emergency Phrase Review CSV</strong>
+              <strong>Emergency Phrase Review Table</strong>
               <span id="phraseRegistryMeta">Loading phrase registry...</span>
+              <em id="phraseSaveStatus">Local edits have not loaded yet.</em>
             </div>
-            <a href="emergency-phrase-review.csv" download>Download CSV</a>
+            <div class="registry-actions">
+              <button id="exportPhraseReview" type="button">Export Edited JSON</button>
+              <button id="resetPhraseReview" type="button">Reset Local Edits</button>
+            </div>
           </div>
 
           <div class="registry-table-wrap" aria-label="Embedded emergency phrase review spreadsheet">

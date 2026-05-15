@@ -16,6 +16,7 @@ Standalone pages:
 - `volunteer-intake.html`
 - `emergency-alert-mirror.html`
 - `emergency-phrase-review.csv`
+- `emergency-phrase-review.json`
 
 ## Source facts checked
 
@@ -35,5 +36,8 @@ Standalone pages:
   lane rather than being blocked at the first screen.
 - Emergency alerts keep English source text attached and require operator review
   before release.
-- `emergency-phrase-review.csv` is generated from the Emergency app language
-  packs and embeds on the leadership page as a draft phrase review registry.
+- `emergency-phrase-review.json` is generated from the Emergency app language
+  packs and embeds on the leadership page as an editable draft phrase review
+  registry. It autosaves local browser edits and exports reviewed JSON.
+- `emergency-phrase-review.csv` is secondary only and written with a UTF-8 BOM
+  for spreadsheet apps that mishandle multilingual CSVs.

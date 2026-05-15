@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePath = path.join(root, "emergency-alert-mirror.js");
 const outputPath = path.join(root, "emergency-phrase-review.csv");
+const jsonOutputPath = path.join(root, "emergency-phrase-review.json");
 const source = fs.readFileSync(sourcePath, "utf8");
 
 function extractObjectLiteral(text, variableName) {
@@ -133,23 +134,57 @@ function csvValue(value) {
 }
 
 const missing = [];
-const rows = phraseKeys.map(([phraseId, category, key, riskLevel, approvalState]) => {
-  const values = languageOrder.map((code) => {
-    const value = languages[code]?.[key];
-    if (!value) missing.push(`${code}.${key}`);
-    return value || "";
-  });
+const registry = {
+  metadata: {
+    title: "Emergency Phrase Review Registry",
+    generatedFrom: "emergency-alert-mirror.js",
+    generatedAt: new Date().toISOString(),
+    phraseCount: phraseKeys.length,
+    languageCount: languageOrder.length,
+    approvalModel: "Draft translations require bilingual human review before production release."
+  },
+  languages: languageOrder.map((code) => ({
+    code,
+    name: languageNames[code],
+    dir: languages[code]?.dir || "ltr"
+  })),
+  rows: phraseKeys.map(([phraseId, category, key, riskLevel, approvalState]) => {
+    const translations = {};
+    languageOrder.forEach((code) => {
+      const value = languages[code]?.[key];
+      if (!value) missing.push(`${code}.${key}`);
+      translations[code] = value || "";
+    });
+
+    return {
+      phraseId,
+      category,
+      sourceKey: key,
+      riskLevel,
+      approvalState,
+      sourceLanguage: "English",
+      englishSource: languages.en[key],
+      reviewer: "",
+      approvedDate: "",
+      notes: "AI draft translation pack. Requires bilingual human review before production release.",
+      translations
+    };
+  })
+};
+
+const rows = registry.rows.map((row) => {
+  const values = languageOrder.map((code) => row.translations[code] || "");
   return [
-    phraseId,
-    category,
-    key,
-    riskLevel,
-    approvalState,
-    "English",
-    languages.en[key],
-    "",
-    "",
-    "AI draft translation pack. Requires bilingual human review before production release.",
+    row.phraseId,
+    row.category,
+    row.sourceKey,
+    row.riskLevel,
+    row.approvalState,
+    row.sourceLanguage,
+    row.englishSource,
+    row.reviewer,
+    row.approvedDate,
+    row.notes,
     ...values
   ];
 });
@@ -159,5 +194,6 @@ if (missing.length) {
 }
 
 const csv = [headers, ...rows].map((row) => row.map(csvValue).join(",")).join("\n");
-fs.writeFileSync(outputPath, `${csv}\n`);
-console.log(`Wrote ${path.relative(root, outputPath)} with ${rows.length} phrases and ${languageOrder.length} languages.`);
+fs.writeFileSync(outputPath, `\uFEFF${csv}\n`);
+fs.writeFileSync(jsonOutputPath, `${JSON.stringify(registry, null, 2)}\n`);
+console.log(`Wrote ${path.relative(root, jsonOutputPath)} and ${path.relative(root, outputPath)} with ${rows.length} phrases and ${languageOrder.length} languages.`);

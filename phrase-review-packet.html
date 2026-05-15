@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emergency Phrase Review Packet</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="phrase-review-packet.js"></script>
+</head>
+<body class="review-packet-page">
+  <main class="review-packet-shell">
+    <header class="review-packet-header">
+      <div>
+        <p class="eyebrow">Human review packet</p>
+        <h1>Emergency Phrase Review Packet</h1>
+        <p>
+          Printable form for bilingual review before approved language is programmed into the application or emergency
+          alert workflow.
+        </p>
+      </div>
+      <div class="review-packet-actions">
+        <button id="printReviewPacket" type="button">Print / Save PDF</button>
+        <a href="index.html#phrase-review">Back to Table</a>
+      </div>
+    </header>
+
+    <section class="review-packet-summary" aria-label="Packet summary">
+      <div>
+        <strong id="packetPhraseCount">-</strong>
+        <span>Phrases</span>
+      </div>
+      <div>
+        <strong id="packetLanguageCount">-</strong>
+        <span>Languages</span>
+      </div>
+      <div>
+        <strong id="packetGeneratedDate">-</strong>
+        <span>Generated</span>
+      </div>
+    </section>
+
+    <section class="review-packet-certification" aria-label="Reviewer certification">
+      <h2>Reviewer Sign-off</h2>
+      <div class="signature-grid">
+        <label>Reviewer name<span></span></label>
+        <label>Language reviewed<span></span></label>
+        <label>Organization / role<span></span></label>
+        <label>Date<span></span></label>
+        <label class="signature-wide">Signature<span></span></label>
+      </div>
+    </section>
+
+    <section id="packetRows" class="review-packet-rows" aria-live="polite">
+      <p>Loading review packet...</p>
+    </section>
+  </main>
+</body>
+</html>

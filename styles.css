@@ -555,6 +555,22 @@ iframe {
   cursor: pointer;
 }
 
+.registry-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 1px solid rgba(216, 41, 32, 0.28);
+  border-radius: 8px;
+  background: #fff6f5;
+  color: var(--red-dark);
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 840;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 .registry-actions button:last-child {
   border-color: var(--line);
   background: #fff;
@@ -772,6 +788,312 @@ iframe {
   line-height: 1.45;
 }
 
+.review-packet-page {
+  background: #f5f6f8;
+}
+
+.review-packet-shell {
+  width: min(100% - 40px, 1120px);
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.review-packet-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.review-packet-header h1 {
+  max-width: 780px;
+  margin: 6px 0 10px;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.review-packet-header p {
+  max-width: 780px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.review-packet-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.review-packet-actions button,
+.review-packet-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  padding: 0 16px;
+  font: inherit;
+  font-weight: 820;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.review-packet-actions button {
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+}
+
+.review-packet-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.review-packet-summary div,
+.review-packet-certification,
+.review-phrase-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.review-packet-summary div {
+  padding: 18px;
+}
+
+.review-packet-summary strong,
+.review-packet-summary span {
+  display: block;
+}
+
+.review-packet-summary strong {
+  color: var(--red);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.review-packet-summary span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-weight: 760;
+}
+
+.review-packet-certification {
+  margin-bottom: 16px;
+  padding: 20px;
+}
+
+.review-packet-certification h2,
+.review-phrase-heading h2,
+.review-source h3 {
+  margin: 0;
+}
+
+.signature-grid,
+.review-fields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.signature-grid {
+  margin-top: 18px;
+}
+
+.signature-grid label,
+.review-fields label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 820;
+  text-transform: uppercase;
+}
+
+.signature-grid span,
+.review-fields span,
+.review-note-cell span {
+  display: block;
+  min-height: 34px;
+  margin-top: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.signature-wide {
+  grid-column: span 4;
+}
+
+.review-packet-rows {
+  display: grid;
+  gap: 18px;
+}
+
+.review-phrase-card {
+  break-inside: avoid;
+  overflow: hidden;
+}
+
+.review-phrase-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 20px;
+}
+
+.review-phrase-number {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 840;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.review-phrase-heading h2 {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.review-phrase-heading p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-weight: 760;
+}
+
+.review-risk {
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.review-risk-high {
+  background: #fff1ef;
+  color: var(--red-dark);
+}
+
+.review-risk-medium {
+  background: #fff7df;
+  color: #8a5a00;
+}
+
+.review-risk-low {
+  background: #ecf8ef;
+  color: var(--green);
+}
+
+.review-fields,
+.review-source {
+  border-bottom: 1px solid var(--line);
+  padding: 16px 20px;
+}
+
+.review-source h3 {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 860;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.review-source p {
+  margin: 7px 0 16px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.review-source p:last-child {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.review-translation-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.review-translation-table th,
+.review-translation-table td {
+  border-bottom: 1px solid var(--soft);
+  padding: 9px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.review-translation-table thead th {
+  background: #fbfbfc;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 860;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.review-translation-table tbody th {
+  width: 170px;
+  color: var(--ink);
+  font-weight: 820;
+}
+
+.review-note-cell {
+  width: 32%;
+}
+
+@media print {
+  body,
+  .review-packet-page {
+    background: #fff;
+  }
+
+  .review-packet-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .review-packet-actions {
+    display: none;
+  }
+
+  .review-packet-header {
+    margin-bottom: 14px;
+  }
+
+  .review-packet-header h1 {
+    font-size: 34px;
+  }
+
+  .review-packet-header p {
+    font-size: 12px;
+  }
+
+  .review-packet-summary div,
+  .review-packet-certification,
+  .review-phrase-card {
+    box-shadow: none;
+  }
+
+  .review-phrase-card {
+    page-break-inside: avoid;
+  }
+
+  .review-phrase-heading h2 {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 950px) {
   .leadership-site {
     padding-left: 0;
@@ -849,8 +1171,30 @@ iframe {
   }
 
   .registry-actions,
-  .registry-actions button {
+  .registry-actions button,
+  .registry-action-link {
     width: 100%;
+  }
+
+  .review-packet-header,
+  .review-packet-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .review-packet-actions a,
+  .review-packet-actions button {
+    width: 100%;
+  }
+
+  .review-packet-summary,
+  .signature-grid,
+  .review-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .signature-wide {
+    grid-column: span 1;
   }
 
   .rank-row.header {
